@@ -1,5 +1,5 @@
 :root {
-  --primary-color: dodgerblue;
+  --primary-color: rgb(251, 255, 30);
   --font-color: rgb(255, 255, 255);
 }
 
@@ -175,18 +175,27 @@ video {
 /* Playback Speed */
 .speed {
   margin-right: 15px;
+  
+}
+
+select, option {
+  cursor: pointer;
 }
 
 
 
 select {
-
+  background: transparent;
   color: var(--font-color);
   border: none;
   font-size: 18px;
   position: relative;
   top: -2.5px;
   border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
 }
 
 
