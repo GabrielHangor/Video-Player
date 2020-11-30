@@ -35,11 +35,23 @@ function displayTime(time) {
   return `${minutes}:${seconds}`;
 }
 
+
+// Update the time/duration in DOM
 function updateProgress() {
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
   currentTime.textContent = `${displayTime(video.currentTime)} /`;
   duration.textContent = `${displayTime(video.duration)}`;
 }
+
+// Set a specific moment of the video
+function setProgress(e) {
+  const newTime = e.offsetX / progressRange.offsetWidth * 100;
+  progressBar.style.width = `${newTime}%`;
+  video.currentTime = newTime * video.duration / 100;
+
+  e.preventDefault();
+}
+
 // Volume Controls --------------------------- //
 
 // Change Playback Speed -------------------- //
@@ -52,3 +64,4 @@ video.addEventListener("click", togglePlay);
 video.addEventListener("ended", showPlayIcon);
 video.addEventListener("timeupdate", updateProgress);
 video.addEventListener("canplay", updateProgress);
+progressRange.addEventListener('click', setProgress);
